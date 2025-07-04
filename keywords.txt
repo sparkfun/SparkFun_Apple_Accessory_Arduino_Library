@@ -1,0 +1,32 @@
+#########################################################
+# Syntax Coloring Map for SparkFunAppleAccessoryDriver  #
+#########################################################
+# Class
+#########################################################
+
+SparkFunAppleAccessoryDriver	KEYWORD1
+
+#########################################################
+# Methods and Functions
+#########################################################
+
+usePSRAM	KEYWORD2
+begin	KEYWORD2
+setNMEApointers	KEYWORD2
+enableDebug	KEYWORD2
+disableDebug	KEYWORD2
+update	KEYWORD2
+startHandshake	KEYWORD2
+setAccessoryName	KEYWORD2
+setModelIdentifier	KEYWORD2
+setManufacturer	KEYWORD2
+setSerialNumber	KEYWORD2
+setFirmwareVersion	KEYWORD2
+setHardwareVersion	KEYWORD2
+setExternalAccessoryProtocol	KEYWORD2
+setBluetoothTransportName	KEYWORD2
+setBluetoothMacAddress	KEYWORD2
+setLocationInfoComponentName	KEYWORD2
+setProductPlanUID	KEYWORD2
+setTransportConnectedMethod	KEYWORD2
+setTransportDisconnectMethod	KEYWORD2
