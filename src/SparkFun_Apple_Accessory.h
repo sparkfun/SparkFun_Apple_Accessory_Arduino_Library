@@ -4,8 +4,9 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SparkFun_Auth_3_CP.h> // Click here to get the library: http://librarymanager/All#SparkFun_Authentication_Coprocessor
+#include "src\SparkFun_iAP2.h"
 
-class SparkFunAppleAccessoryDriver : public SparkFuniAP2Driver
+class SparkFunAppleAccessoryDriver
 {
     public:
         SparkFunAppleAccessoryDriver();
@@ -184,7 +185,7 @@ class SparkFunAppleAccessoryDriver : public SparkFuniAP2Driver
         void deallocAuthCert(void);
 
         SparkFunAuth3CPArdI2C _authCoprocessor; // Instance of the authentication coprocessor
-        SparkFuniAP2Driver _iAP2; // Instance of the iAP2 driver
+        SparkFuniAP2Driver _iAP2; // Instance of the iAP2 driver (details are under NDA)
         uint8_t *_authCert; // Storage for the authentication certificate
         size_t _certSize; // The size of the authentication certificate
         char _authCertSerial[32 + 1]; // Storage for the certificate serial number
