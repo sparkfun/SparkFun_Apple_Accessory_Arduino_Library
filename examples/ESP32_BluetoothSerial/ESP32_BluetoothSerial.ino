@@ -9,7 +9,7 @@
 
   Details of the Apple Accessory Protocol are only available under NDA.
   The SparkFun Apple Accessory Arduino Library is pre-compiled for ESP32
-  to protect Apple's IP in the source code.
+  to protect the Apple IP contained in the source code.
 
   This example shares the NMEA Location Information from a u-blox GNSS
   with the iPhone, allowing map apps to use the location. It requires a
@@ -183,7 +183,7 @@ void setup()
     while(1);
   }
 
-  appleAccessory.enableDebug(&Serial); // Enable debug prints to Serial
+  //appleAccessory.enableDebug(&Serial); // Uncomment to enable debug prints to Serial
 
   // Pass Identity Information, Protocols and Names into the accessory driver
   appleAccessory.setAccessoryName(accessoryName);
