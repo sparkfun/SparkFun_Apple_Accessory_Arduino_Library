@@ -4,7 +4,7 @@ An Arduino Library for Apple Accessories using iAP2 connections - precompiled fo
 
 This library supports communication with Apple Accessories using the iAP2 protocol, as defined in the Accessory Interface Specification (Release R44). Unfortunately, the Interface Specification is only available under NDA. This library is precompiled for the ESP32 to protect the source code.
 
-iAP2 is supported over several transports, including Bluetooth, UART and USB. The [ESP32_BluetoothSerial](./examples/ESP32_BluetoothSerial/ESP32_BluetoothSerial.ino) example demonstrates how to communicate with an Accessory using ESP32 BluetoothSerial as the transport. The example depends on a modified version of BluetoothSerial which makes ACL more accessible. It also depends on a modified version of libbt.a which has been compiled with BLUEDROID, L2CAP and SDP enabled.
+iAP2 is supported over several transports, including Bluetooth, UART and USB. The [ESP32_BluetoothSerial](./examples/ESP32_BluetoothSerial/ESP32_BluetoothSerial.ino) example demonstrates how to communicate with an Accessory using ESP32 BluetoothSerial as the transport. The example depends on a modified version of BluetoothSerial which makes ACL more accessible. It also depends on a modified version of libbt.a which has been compiled with SPP enabled.
 
 ## Repository Contents
 
