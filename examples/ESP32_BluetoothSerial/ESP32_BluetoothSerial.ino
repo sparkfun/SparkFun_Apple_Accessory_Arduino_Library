@@ -20,9 +20,7 @@
   NMEA GGA and RMC are shared with apps like Maps, over the Control Session
   as Location Information.
   NMEA GGA, RMC and GST are shared with apps like Field Maps, over a dedicated
-  External Accessory protocol session. Here we emulate the Bad Elf GPS Pro,
-  using the com.bad-elf.gps protocol name. We are grateful to Bad Elf for
-  sharing details of their protocol openly: https://github.com/BadElf/gps-sdk
+  External Accessory protocol session.
 
   This example contains a copy of Espressif's BluetoothSerial code, with a
   modified ESP_BT_GAP_ACL_CONN_CMPL_STAT_EVT event.
@@ -107,9 +105,9 @@ const char *manufacturer = "SparkFun Electronics";
 const char *serialNumber = "123456";
 const char *firmwareVersion = "1.0.0";
 const char *hardwareVersion = "1.0.0";
-const char *EAProtocol = "com.bad-elf.gps"; // Emulate the Bad Elf GPS Pro. Thank you Bad Elf
+const char *EAProtocol = "com.sparkfun.rtk";
 const char *BTTransportName = "com.sparkfun.bt";
-const char *LIComponentName = "com.sparkfun.rtk";
+const char *LIComponentName = "com.sparkfun.li";
 const char *productPlanUID = "0123456789ABCDEF"; // This comes from the MFi Portal, when you register the product with Apple
 
 // ===================================================================================================================
