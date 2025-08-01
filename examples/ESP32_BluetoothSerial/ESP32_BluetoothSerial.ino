@@ -1,7 +1,7 @@
 /*
   SparkFun Apple Accessory Arduino Library - Example
 
-  ESP32_Bluetooth
+  ESP32_BluetoothSerial
 
   This example demonstrates how to create an Apple Accessory,
   based on ESP32 hardware, which will communicate with Apple
