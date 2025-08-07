@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SparkFun_Auth_3_CP.h> // Click here to get the library: http://librarymanager/All#SparkFun_Authentication_Coprocessor
-#include "src\SparkFun_iAP2.h"
+#include "src/SparkFun_iAP2.h"
 
 class SparkFunAppleAccessoryDriver
 {
