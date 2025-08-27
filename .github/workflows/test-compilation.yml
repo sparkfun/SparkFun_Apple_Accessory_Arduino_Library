@@ -47,7 +47,7 @@ jobs:
 
       - name: Get Known Libraries
         run: arduino-cli lib install
-          "SparkFun u-blox GNSS v3"@main
+          "SparkFun u-blox GNSS v3"@3.1.10
           "SparkFun Authentication Coprocessor Arduino Library"@main
           "SparkFun Toolkit"@main
 
