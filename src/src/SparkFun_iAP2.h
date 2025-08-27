@@ -35,7 +35,9 @@ class SparkFuniAP2Driver
         void iap2LinkUpdate();
         void iap2TrafficUpdate();
         void startHandshake(Stream *theStream);
-        void setNMEApointers(char *latestGPGGA, char *latestGPRMC, char *latestGPGST = nullptr);
+        void setNMEApointers(char *latestGPGGA, char *latestGPRMC, char *latestGPGST = nullptr, char *latestGPVTG = nullptr);
+        void setEASessionPointer(char *latestEASessionData);
+        bool latestEASessionDataIsBlocking();
         void setAuthPointers(uint8_t *authCert, size_t certSize, char *authCertSerial);
         void setAuthCoprocessorPointer(SparkFunAuth3CPArdI2C *authCoprocessor);
         void setAccessoryName(const char *accessoryName);
@@ -125,6 +127,9 @@ class SparkFuniAP2Driver
         char *_latestGPGGA = nullptr; // Pointer to the latest NMEA GGA, provided by an external GNSS
         char *_latestGPRMC = nullptr; // Pointer to the latest NMEA RMC, provided by an external GNSS
         char *_latestGPGST = nullptr; // Pointer to the latest NMEA GST, provided by an external GNSS
+        char *_latestGPVTG = nullptr; // Pointer to the latest NMEA VTG, provided by an external GNSS
+        char *_latestEASessionData = nullptr; // Pointer to the latest ES Session NMEA GSA / GSV blob, provided by an external GNSS
+        bool _latestEASessionDataIsBlocking = false; // Flag to indicate when EA Session Data is being written to the device
 
         uint8_t *_authCert = nullptr; // Storage for the authentication certificate
         size_t _certSize = 0; // The size of the authentication certificate
