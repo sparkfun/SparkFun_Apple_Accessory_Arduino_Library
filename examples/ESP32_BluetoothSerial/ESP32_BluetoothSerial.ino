@@ -49,7 +49,7 @@
     CONFIG_BTDM_CTRL_MODE_BR_EDR_ONLY=n
   (SPP is disabled in the standard libbt.a)
 
-  Tried and tested on: Arduino esp32 v3.1.3 (IDF 5.3) and v3.2.0 (IDF 5.4)
+  Tried and tested on: Arduino esp32 v3.0.7 (IDF 5.1)
 
 */
 
@@ -161,12 +161,12 @@ void setup()
   
   esp_sdp_init();
 
-  esp_bluetooth_sdp_raw_record_t record = {(esp_bluetooth_sdp_types_t)0};
-  record.hdr.type = ESP_SDP_TYPE_RAW;
-  record.hdr.uuid.len = sizeof(UUID_IAP2);
-  memcpy(record.hdr.uuid.uuid.uuid128, UUID_IAP2, sizeof(UUID_IAP2));
-  record.hdr.service_name_length = strlen(sdp_service_name) + 1;
-  record.hdr.service_name = (char *)sdp_service_name;
+  esp_bluetooth_sdp_hdr_overlay_t record = {(esp_bluetooth_sdp_types_t)0};
+  record.type = ESP_SDP_TYPE_RAW;
+  record.uuid.len = sizeof(UUID_IAP2);
+  memcpy(record.uuid.uuid.uuid128, UUID_IAP2, sizeof(UUID_IAP2));
+  record.service_name_length = strlen(sdp_service_name) + 1;
+  record.service_name = (char *)sdp_service_name;
   esp_sdp_create_record((esp_bluetooth_sdp_record_t *)&record);
 
   // ==============================================================================================================
