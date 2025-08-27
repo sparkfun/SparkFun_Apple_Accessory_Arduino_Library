@@ -48,8 +48,8 @@ jobs:
       - name: Get Known Libraries
         run: arduino-cli lib install
           "SparkFun u-blox GNSS v3"@3.1.10
-          "SparkFun Authentication Coprocessor Arduino Library"@main
-          "SparkFun Toolkit"@main
+          "SparkFun Authentication Coprocessor Arduino Library"@1.0.0
+          "SparkFun Toolkit"@1.0.6
 
       - name: Patch libbt
         run: |
