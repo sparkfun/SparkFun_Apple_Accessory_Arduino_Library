@@ -42,9 +42,39 @@ class SparkFunAppleAccessoryDriver
          *
          * @param latestGPGST Pointer to the latest GNSS NMEA GPGST message (optional)
          *
-         * @note The pointers will be set the nullptr once the NMEA data has been consumed
+         * @param latestGPVTG Pointer to the latest GNSS NMEA GPVTG message (optional)
+         *
+         * @note Each pointer points to NULL when the NMEA data has been consumed.
          */
-        void setNMEApointers(char *latestGPGGA, char *latestGPRMC, char *latestGPGST = nullptr);
+        void setNMEApointers(char *latestGPGGA, char *latestGPRMC, char *latestGPGST = nullptr, char *latestGPVTG = nullptr);
+
+        /**
+         * @brief Set the pointer to the latest EA Session blob.
+         *        E.g. NMEA GSA and GSV - from external GNSS.
+         * 
+         * @param latestEASessionData Pointer to the latest EA Session blob.
+         *
+         * @note The latestEASessionData is passed to the EA Session as-is, (up to)
+         *       1000 bytes at a time.
+         *       If must contain CRLF delimiters.
+         *       It must be NULL-terminated as strlen is used to calculate the length.
+         *       The pointer will point to NULL when the data has been consumed.
+         *       Call latestEASessionDataIsBlocking before adding new data to
+         *       latestEASessionData. Do not modify latestEASessionData if
+         *       latestEASessionDataIsBlocking is true.
+         */
+        void setEASessionPointer(char *latestEASessionData);
+
+        /**
+         * @brief Check if the latestEASessionData is in use (blocking)
+         * 
+         * @return Returns `true` when the latestEASessionData is being written
+         *         to the device, `false` otherwise.
+         *
+         * @note This is a poor man's semaphore. Super code threads / tasks should not update
+         *       the latestEASessionData while latestEASessionDataIsBlocking is true.
+         */
+        bool latestEASessionDataIsBlocking();
 
         /**
          * @brief Enable debug prints on the selected Print stream
