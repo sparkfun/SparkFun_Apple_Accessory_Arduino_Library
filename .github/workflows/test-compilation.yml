@@ -1,0 +1,61 @@
+# Link to Introduction to Arduino Actions: 
+# https://blog.arduino.cc/2021/04/09/test-your-arduino-projects-with-github-actions/
+name: test-compilation
+
+on:
+  workflow_dispatch:
+    branches:
+  #- push
+  #- pull_request
+
+env:
+  CORE_VERSION: 3.0.7
+
+jobs:
+  compile-sketch:
+
+    name: Compile sketch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        
+      - name: Branch name
+        run: echo running on branch ${{github.ref_name}}
+
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Start config file
+        run: arduino-cli config init --additional-urls "https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json,https://espressif.github.io/arduino-esp32/package_esp32_dev_index.json"
+
+      - name: Update core index
+        run: arduino-cli core update-index
+
+      - name: Update library index
+        run: arduino-cli lib update-index
+
+      - name: Install platform
+        run: arduino-cli core install esp32:esp32@${{ env.CORE_VERSION }}
+
+      - name: Get IDF version
+        run: |
+          cd /home/runner/.arduino15/packages/esp32/tools/esp32-arduino-libs
+          IDF_VERSION=$(ls | grep idf-release)
+          echo "ESP_IDF=${IDF_VERSION}" >> "$GITHUB_ENV"
+
+      - name: Get Known Libraries
+        run: arduino-cli lib install
+          "SparkFun u-blox GNSS v3"@main
+          "SparkFun Authentication Coprocessor Arduino Library"@main
+          "SparkFun Toolkit"@main
+
+      - name: Patch libbt
+        run: |
+          cd examples/ESP32_BluetoothSerial/patch/
+          cp libbt.a /home/runner/.arduino15/packages/esp32/tools/esp32-arduino-libs/${{ env.ESP_IDF }}/esp32/lib/libbt.a
+
+      - name: Compile Sketch
+        run: arduino-cli compile -v --library . --warnings all --fqbn "esp32:esp32:esp32" ./examples/ESP32_BluetoothSerial/ESP32_BluetoothSerial.ino
+
