@@ -29,7 +29,7 @@
   Bluetooth library. The custom version can be found in the "patch" folder.
   It needs to be copied into:
     C:\Users\<YOUR USER>\AppData\Local\Arduino15\packages\esp32\tools
-    \esp32-arduino-libs\idf-release_v5.4-2f7dcd86-v1\esp32\lib
+    \esp32-arduino-libs\idf-release_v5.1-632e0c2a\esp32\lib
   We created it using the Espressif ESP32 Arduino Lib Builder:
     https://github.com/espressif/esp32-arduino-lib-builder
   It includes:
@@ -47,7 +47,7 @@
     CONFIG_BTDM_SCAN_DUPL_CACHE_SIZE=20
     CONFIG_BTDM_CTRL_MODE_BLE_ONLY=n
     CONFIG_BTDM_CTRL_MODE_BR_EDR_ONLY=n
-  (SPP is disabled in the standard libbt.a)
+  (SDP is disabled in the standard libbt.a)
 
   Tried and tested on: Arduino esp32 v3.0.7 (IDF 5.1)
 
@@ -114,7 +114,6 @@ const char *productPlanUID = "0123456789ABCDEF"; // This comes from the MFi Port
 // Bluetooth
 
 #include "src/BluetoothSerial/BluetoothSerial.h" //Local copy for modifying ESP_BT_GAP_ACL_CONN_CMPL_STAT_EVT event
-//#include "BluetoothSerial.h"
 BluetoothSerial SerialBT;
 
 #include "esp_sdp_api.h"
